@@ -1,0 +1,41 @@
+services:
+  # Define the first service
+  ucp-server: #service name
+    # Use the official PostgreSQL image from Docker Hub
+    image: postgres:18.6
+    container_name: postgres_ucp
+    restart: unless-stopped
+    # Set the environment variables for the PostgreSQL container
+    environment:
+      POSTGRES_USER: adminadmin
+      POSTGRES_PASSWORD: Jodar86+
+      POSTGRES_DB: urban_city
+    ports:
+      - "5435:5432" ##5432 is the default port for PostgreSQL
+    volumes:
+      - ./postgres_data:/var/lib/postgresql #removed /a due to upgrade to postgres 18.6. Version 18 does not work with /data anymore.
+    networks:
+      - civic_pulse_ucp
+
+  # Define the second service
+  pgadmin:
+    # Use the official PostgreSQL image from Docker Hub
+    image: dpage/pgadmin4:9.18
+    container_name: pgadmin_ucp
+    restart: unless-stopped
+    # Set the environment variables for the pgadmin container
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5051:80" ##80 is the default port for pgadmin
+    depends_on:
+      - ucp-server #service name of chosen for postgres service
+    networks:
+      - civic_pulse_ucp
+volumes:
+  postgres_data:
+      
+networks:
+  civic_pulse_ucp:
+  
