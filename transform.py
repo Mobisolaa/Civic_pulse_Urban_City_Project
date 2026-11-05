@@ -17,8 +17,8 @@ def transform():
     df = df.rename({col:
                      col.strip()
                      .replace(' ', '_').lower()
-                     .replace(' (formerly Complaint Type)','').lower()
-                     .replace(' (formerly Descriptor type)','').lower()
+                     .replace('(','_').lower()
+                     .replace(')','_').lower()
                        for col in df.columns})
     df.sink_parquet(target_uri, storage_options=storage_options, compression='snappy')
     print(f'data loaded to silver layer at {target_uri}')
