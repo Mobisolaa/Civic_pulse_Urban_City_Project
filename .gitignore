@@ -1,3 +1,7 @@
 Data
 .env
 virEnvironment
+credentials.sh
+file.txt
+postgres_data/
+tests/
