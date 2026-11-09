@@ -5,9 +5,11 @@ from pathlib import Path
 BlobServiceClient = import_module("azure.storage.blob").BlobServiceClient
 load_dotenv = import_module("dotenv").load_dotenv
 
-location = Path(__file__).resolve().parent
+## Parent refers to the folder its under in this case "include". Before we introduced astro, there was no include folder,
+## so the parent was civic_pulse_ucp. 
+location = Path(__file__).resolve().parent ## says location is Include
 
-project_root = location
+project_root = location.parent ## says include is under civic_pulse parent. 
 
 load_dotenv()
 

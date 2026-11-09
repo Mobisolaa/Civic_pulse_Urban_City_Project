@@ -6,3 +6,5 @@ airflow_settings.yml
 tests
 plugins
 postgres_data
+credentials.sh
+file.txt
