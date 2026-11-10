@@ -1,7 +1,11 @@
 Data
 .env
 virEnvironment
+.astro
+airflow_settings.yml
+tests
+plugins
+postgres_data
 credentials.sh
 file.txt
-postgres_data/
-tests/
+airflow_settings.yaml
