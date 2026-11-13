@@ -8,3 +8,4 @@ plugins
 postgres_data
 credentials.sh
 file.txt
+airflow_settings.yaml
